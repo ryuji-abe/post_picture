@@ -1,0 +1,23 @@
+<div class="contents">
+  <p class="alert-info"><%= notice %></p>
+  <% @pictures.each do |picture| %>
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6 post">
+      <div class="post-info">
+        <%= picture.user.name %> さん
+      </div>
+      <div class="post-info">
+        <%= image_tag picture.image %>
+      </div>
+      <div class="post-info">
+        <%= picture.content %>
+      </div>
+      <% if logged_in? %>
+      <div class="post-info">
+        <%= link_to '詳細', picture_path(picture.id), class:'btn btn-default' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>

@@ -1,0 +1,31 @@
+<div class="contents">
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6">
+      <h4>以下の内容で投稿します</h4>
+    </div>
+    <div class="col-sm-offset-3 col-sm-6 post">
+    <%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
+      <%= form.hidden_field :image_cache %>
+      <%= form.hidden_field :content %>
+      <div class="post-info">
+        <%= image_tag @picture.image %>
+      </div>
+      <div class="post-info">
+        <%= @picture.content %></p>
+      </div>
+      <%= hidden_field_tag :"cache[image]", @picture.image.cache_name %>
+      <div class="post-info">
+        <%= form.submit  "投稿する" %>
+      </div>
+    <% end %>
+    <%= form_with(model: @picture, url: new_picture_path, local: true, method: 'get') do |form| %>
+      <%= form.hidden_field :image_cache %>
+      <%= form.hidden_field :content %>
+      <%= hidden_field_tag :"cache[image]", @picture.image.cache_name %>
+      <div class="post-info">
+        <%= form.submit "もどる", name: 'back' %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

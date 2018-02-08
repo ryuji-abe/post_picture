@@ -1,0 +1,52 @@
+<div class="contents">
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6">
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <ul class="row">
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= form_with(model: @user, local: true) do |f| %>
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6 post">
+      <div>
+        <%= f.label :name %>
+      </div>
+      <div class="input-post-info">
+        <%= f.text_field :name %>
+      </div>
+      <div>
+        <%= f.label :email %>
+      </div>
+      <div class="input-post-info">
+        <%= f.email_field :email %>
+      </div>
+      <div>
+        <%= f.label :password %>
+      </div>
+      <div class="input-post-info">
+        <%= f.password_field :password %>
+      </div>
+      <div>
+        <%= f.label :password_confirmation %>
+      </div>
+      <div class="input-post-info">
+        <%= f.password_field :password_confirmation %>
+      </div>
+      <div class="post-info">
+        <%= f.submit "登録する", class: 'btn btn-default' %>
+      </div>
+      <div class="post-info">
+        アカウントをお持ちですか？<%= link_to "ログインする", new_session_path %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

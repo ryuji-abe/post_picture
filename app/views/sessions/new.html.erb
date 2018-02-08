@@ -1,0 +1,28 @@
+<div class="contents">
+  <p class="alert-info"><%= notice %></p>
+  <p class="alert-danger"><%= danger %></p>
+  <%= form_with(scope: :session, url: sessions_path) do |f| %>
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6 post">
+      <div>
+        <%= f.label :email %>
+      </div>
+      <div class="input-post-info">
+        <%= f.email_field :email %>
+      </div>
+      <div>
+        <%= f.label :password %>
+      </div>
+      <div class="input-post-info">
+        <%= f.password_field :password %>
+      </div>
+      <div class="post-info">
+        <%= f.submit "ログイン", class:'btn btn-default' %>
+      </div>
+      <div class="post-info">
+        アカウントをお持ちでないですか？<%= link_to "登録する", new_user_path %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

@@ -1,0 +1,34 @@
+<div class="contents">
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6 post">
+      <div class="post-info">
+        <%= @picture.user.name %> さん
+      </div>
+      <div class="post-info">
+        <%= image_tag @picture.image %>
+      </div>
+      <div class="post-info">
+        <%= @picture.content %>
+      </div>
+      <% if @picture.user == current_user %>
+        <div class="post-info">
+          <%= link_to "編集", edit_picture_path(@picture.id), class:'btn btn-default', data: { confirm: '本当に編集していいですか？' } %>
+          <%= link_to '削除', picture_path(@picture.id), class:'btn btn-default', method: :delete, data: { confirm: '本当に削除していいですか？' } %>
+        </div>
+      <% else %>
+        <% if @favorite.present? %>
+        <div class="post-info">
+            <%= link_to 'いいねをはずす', favorite_path(picture_id: @picture.id), method: :delete, class: 'btn btn-danger' %>
+        </div>
+        <% else %>
+        <div class="post-info">
+          <%= link_to 'いいね', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>
+        </div>
+        <% end %>
+      <% end %>
+      <div class="post-info">
+        <%= link_to "一覧", pictures_path, class: 'btn btn-default' %>
+      </div>
+    </div>
+  </div>
+</div>

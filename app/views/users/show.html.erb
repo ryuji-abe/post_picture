@@ -1,0 +1,31 @@
+<div class="contents">
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6">
+      <div class="post-info">
+        <%= @user.name %> さん <%= @user.email %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6">
+      <div class="post-info">
+        <h4>お気に入り一覧</h4>
+      </div>
+    </div>
+  </div>
+  <% @favorites_pictures.each do |picture| %>
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6 post">
+      <div class="post-info">
+        <%= picture.user.name %> さん
+      </div>
+      <div class="post-info">
+        <%= image_tag picture.image %>
+      </div>
+      <div class="post-info">
+        <%= picture.content %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
